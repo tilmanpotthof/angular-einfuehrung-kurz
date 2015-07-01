@@ -50,7 +50,7 @@
 
       <section>
         <section data-markdown><script type="text/template">
-          # Kurz zu mir
+          # Wer bin ich?
 
           <pre><code>var me = {
             name : "Tilman Potthof",
@@ -85,9 +85,9 @@
         </script></section>
       </section>
 
-      <section>
+      <section data-background="#444">
         <section data-markdown><script type="text/template">
-          ## Agenda? Nö.
+          ## Agenda? Nö. Brainstorming!
         </script></section>
         <section data-markdown><script type="text/template">
           ## Brainstorming!
@@ -122,7 +122,7 @@
         </script></section>
       </section>
 
-      <section>
+      <section  data-background="#555">
         <section data-markdown><script type="text/template">
           ## Installation und Repository
           * WebStorm oder E.D.V.
@@ -162,16 +162,26 @@
   &lt;/body&gt;
 </code></pre>
 
-          <div data-markdown><script type="text/template">
-            1. **ngApp** - Initialisierung der App auf dem DOM
-            1. **{{ name }}** - Template-Expression
-            1. **ngModel** - Binding der Variable an das Eingabefeld
-          </script></div>
-
+          <table>
+            <tbody>
+            <tr>
+              <td>ngApp</td>
+              <td>Initialisierung der App für das DOM</td>
+            </tr>
+            <tr>
+              <td>{{ name }}</td>
+              <td>Template-Expression</td>
+            </tr>
+            <tr>
+              <td>ngModel</td>
+              <td>Binding der Variable an das Eingabefeld</td>
+            </tr>
+            </tbody>
+          </table>
         </section>
       </section>
 
-      <section data-background="#4d7e65">
+      <section>
         <section data-markdown><script type="text/template">
           ## Ein Schritt zurück
           ## -
@@ -185,6 +195,197 @@
           * Fokus auf wiederverwendbare Komponenten
         </script></section>
       </section>
+
+        <section data-background="#295535">
+          <section data-markdown><script type="text/template">
+            ## Template Expression
+          </script></section>
+          <section>
+            <h2>Template Expression</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <td>{{ myExpression }}</td>
+                  <td>Mustache-Syntax</td>
+                </tr>
+                <tr>
+                  <td>{{ 1 + 2 + 2 }}</td>
+                  <td>Berechnung</td>
+                </tr>
+                <tr>
+                  <td>{{ myObject.someAttribute }}</td>
+                  <td>Objekt-Zugriff</td>
+                </tr>
+                <tr>
+                  <td>{{ timestamp + 'ms' }}</td>
+                  <td>String Konkatenation</td>
+                </tr>
+                <tr>
+                  <td>{{ myBoolean ? 'YES' : 'NO' }}</td>
+                  <td>Tenärer Operator</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section data-markdown><script type="text/template">
+            ## Aufgabe
+            * Texteingabe mit Zeichenzähler
+            * 140 Zeichen
+            * Negativer Wert bei Überschreitung
+            * Zusatzaufgaben
+                * Wörter zählen
+                * Zeichen verkehrt ausgeben
+          </script></section>
+        </section>
+
+
+      <section data-background="#2e6b46">
+        <section data-markdown><script type="text/template">
+          ## Two-Way-Binding
+        </script></section>
+        <section>
+          <div data-markdown><script type="text/template">
+            ## Two-Way-Binding
+            * Automatische prüfung der Änderungen
+            * Funktioniert für alle Eingabefelder
+            * Binding an Variablen und Objekt-Attribute
+          </script></div>
+        <pre><code contenteditable><input type="checkbox" ng-model="me.hungry" />
+<select ng-model="o.value">
+  <option>1</option>
+  <option>2</option>
+</select></code></pre>
+        </section>
+        <section>
+          <div data-markdown><script type="text/template">
+          ## Aufgabe
+          * Benutzerformular - Alle Werte als Objekt-Attribut
+              * Vorname, Nachname (String)
+              * Alter (Zahl)
+              * Mac-User, Bremen-Fan, Vegetarier (Boolean)
+              * Lieblingsessen (Auswahlliste: Pizza, Salat, Pommes...)
+          * Ausgabe als JSON in einem pre-Tag
+        </script></div>
+        <pre><code contenteditable>{
+  "vorname": "Tilman",
+  "nachname": "Potthof",
+  "macUser": true,
+  "vegetarier": true,
+  "lieblingsessen": "Pizza",
+  "bremenFan": false
+}</code></pre>
+        </section>
+      </section>
+
+      <section data-background="#2e6b46">
+        <section data-markdown><script type="text/template">
+          ## Scopes und Controller
+        </script></section>
+        <section>
+          <h2>Scopes und Controller</h2>
+
+
+<pre><code contenteditable><div ng-controller="HelloWorldController">
+  <h3>Hello {{ name }}!</h3>
+  <div>
+    <input type="text" ng-model="name"/>
+  </div>
+</div></code></pre>
+
+          <em>Namenkonvention: HelloWorldController.controller.js</em>
+
+<pre><code contenteditable>angular
+  .module('helloWorld')
+  .controller('HelloWorldController', function ($scope) {
+    'use strict';
+
+    $scope.name = 'Bernd';
+});</code></pre>
+
+        </section>
+        <section data-markdown><script type="text/template">
+          ## Aufgabe
+          * Benutzer-Objekt für Formular vorbelegen
+          * Berechnung der Zeichenlänge in Funktion auslagern
+        </script></section>
+      </section>
+
+      <section data-background="#2e6b46">
+        <section data-markdown><script type="text/template">
+          ## Verschachtelte Scopes
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Gemeinsame Aufgabe
+          * Verschachtelten Scope anlegen
+          * Mehrere Eingabefelder auf gleiche Variablen in unterschiedlichen Scopes
+          * Seiteneffekte untersuchen und Workarounds besprechen
+          * Ausgabe von `$rootScope` und Debugging
+
+        </script></section>
+      </section>
+
+      <section data-background="#0c3b66">
+        <section data-markdown><script type="text/template">
+          ## Standard-Direktiven
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Direktiven - Was soll das?
+          * Wiederverwendbare Element und Attribute
+          * Idee von HTML "kopiert"
+          * Kapseln von komplexen Verhalten in Bausteine
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Interaktion und Events
+          * `ngClick`, `ngFocus`, `ngMousemove`, `ngSubmit`
+          * `$digest`-Zyklus und Vergleich mit jQuery
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Ein- und Ausblenden von Elementen
+          * `ngShow`, `ngHide`, `ngIf`, `ngSwitch`
+          * `ngCloak` - Ausblenden vor dem Rendern
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Weitere Direktiven
+          * `ngRepeat` - Die Angular Schleife
+          * `ngClass` + `ngStyle` - Styling
+          * `ngInit` - Variablen setzen
+          * `ngInclude` - Templates includieren
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Aufgabe
+          * Hinzufügen der Benutzer aus dem Formular in eine Liste
+          * Rendern der Liste als Tabelle
+          * Highlighting von Benutzern mit besonderen Eigenschaften
+          * Löschen Button in jeder Reihe
+          * Inline-Bearbeiten in den Reihen
+        </script></section>
+      </section>
+
+      <section data-background="#542866">
+        <section data-markdown><script type="text/template">
+          ## Services
+          ## und
+          ## Dependency-Injection
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Services?
+          ####  Reichen die Controller nicht für alles?
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Service
+          * Wiederverwendbare Logik-Bausteine
+          * Kapselung von Business-Logik, Kommunikation etc.
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Aufgabe
+          * Laden eine Benutzer-Liste mit `$http`
+          * Schreiben eines Benutzer-Service Hilfsfunktionen
+              * `addUser`
+              * `removeUser`
+              * `getUsers`
+        </script></section>
+      </section>
+
 
       <section>
         <h2>Clever Quotes</h2>
