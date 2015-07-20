@@ -344,6 +344,10 @@
           * `ngShow`, `ngHide`, `ngIf`, `ngSwitch`
           * `ngCloak` - Ausblenden vor dem Rendern
         </script></section>
+        <section><h2>Code-Beispiel</h2><pre><code contenteditable><span ng-show="isEditing()">
+    <input type="text" ng-model="user.firstname"/>
+</span></code></pre>
+        </section>
         <section data-markdown><script type="text/template">
           ## Weitere Direktiven
           * `ngRepeat` - Die Angular Schleife
@@ -351,6 +355,30 @@
           * `ngInit` - Variablen setzen
           * `ngInclude` - Templates includieren
         </script></section>
+
+        <section>
+          <h2>Code-Beispiele</h2>
+
+          <pre><code contenteditable><li ng-repeat="word in someText.split(' ')">
+    {{ word }}
+</li></code></pre>
+
+          <pre><code contenteditable><div ng-init="myLength = 140">
+  <div class="alert"
+    ng-class="{'alert-danger': myText.length > maxLength, 'alert-success': myText.length <= maxLength }">
+    {{ maxLength - myText.length }}
+  </div>
+</div></code></pre>
+
+          <pre><code contenteditable><div>
+  <input type="number" ng-model="c" min="0" max="1" step="0.1"/>
+  <div ng-init="c=1;" ng-style="{'opacity': c}">
+    Some content
+  </div>
+</div></code></pre>
+
+        </section>
+
         <section data-markdown><script type="text/template">
           ## Aufgabe
           * Hinzufügen der Benutzer aus dem Formular in eine Liste
@@ -359,6 +387,30 @@
           * Löschen Button in jeder Reihe
           * Inline-Bearbeiten in den Reihen
         </script></section>
+      </section>
+
+      <section>
+        <section data-markdown id="zwischenstand"><script type="text/template">
+          ## Zwischenstand der Aufgaben
+        </script></section>
+        <section>
+          <h2>Zwischenstand</h2>
+          <ul>
+            <li>
+              github branch -
+              <a href="https://github.com/tilmanpotthof/angular-workshop-setup/tree/apps/user-management">
+                <code>apps/user-management</code>
+              </a>
+            </li>
+          </ul>
+
+<pre><code contenteditable>git add .
+git commit -m "mein erster angular code"
+git fetch origin
+git checkout apps/user-management
+</code></pre>
+
+        </section>
       </section>
 
       <section data-background="#542866">
@@ -375,20 +427,112 @@
           ## Service
           * Wiederverwendbare Logik-Bausteine
           * Kapselung von Business-Logik, Kommunikation etc.
+          * Nützliche Built-in Services
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Built-In Services
+          * `$http` - AJAX-Requests
+          * `$log` - Logging-Wrapper
+          * `$parse` - Expression-Parser
+          * `$timeout` - `setTimeout` wrapper
+        </script></section>
+
+        <section>
+          <h2>Code-Beispiel</h2>
+
+          <pre><code contenteditable>angular.module('myModule')
+  .controller('MyController', function($log, $http) {
+    'use strict';
+
+    $log.info('ENTER MyController');
+
+    $http.get('someData.json').success(function (data) {
+       $log.info('LOADED someData.json', data);
+    });
+
+    $log.info('LEAVE MyController');
+  });</code></pre>
+
+        </section>
+
+
+        <section data-markdown><script type="text/template">
+          ## Gemeinsame Aufgabe
+          * Live-Coding mit den Built-In Services
         </script></section>
         <section data-markdown><script type="text/template">
           ## Aufgabe
           * Laden eine Benutzer-Liste mit `$http`
+          * API randomuser.me
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Eigene Services
+          * `service` - AJAX-Requests
+          * `factory` - Logging-Wrapper
+          * `provider` - Expression-Parser
+        </script></section>
+
+        <section><pre><code contenteditable>var app = angular.module("myApp", []);
+app.controller("myController", function ($scope, myService) {
+  $scope.myService = myService;
+});
+app.factory("myService", function () {
+  return {
+    myImportantValue: 42
+  };
+});</code></pre>
+        </section>
+
+        <section data-markdown><script type="text/template">
+          ## Aufgabe
           * Schreiben eines Benutzer-Service Hilfsfunktionen
-              * `addUser`
-              * `removeUser`
-              * `getUsers`
+            * `addUser`
+            * `removeUser`
+            * `getUsers`
+            * `loadUsers`
         </script></section>
       </section>
 
+      <section data-background="#206664">
+        <section data-markdown><script type="text/template">
+          ## Filter
+        </script></section>
+        <section data-markdown><script type="text/template">
+          ## Filter
+          * Wiederverwendbare Template-Transformatoren
+          * Build-In Filter (`date`, `json`, `limitTo`, `filter`)
+        </script></section>
+        <section>
+          <h2>Code-Beispiele</h2>
+          <pre><code contenteditable>{{ user.birthdate | date:'dd.MM.yyy' }}</code></pre>
+          <pre><code contenteditable>{{ user.sha256 | uppercase | limitTo:7 }}</code></pre>
+          <pre><code contenteditable><li ng-repeat="user in users | filter:{age:">{{ user.name }}</li></code></pre>
+          <pre><code contenteditable><li ng-repeat="user in users | limitTo:10">{{ user.name }}</li></code></pre>
+        </section>
+        <section>
+          <h2>Eigene Filter</h2>
+          <pre><code contenteditable>angular.module('commons').filter('eliminateVowels', function () {
+  'use strict';
+
+  return function (value, disable) {
+    if (angular.isString(value) && !disable) {
+      return value.replace(/[AEIOUaeiou]/g, '');
+    } else {
+      return value;
+    }
+  };
+});</code></pre>
+
+          <pre><code contenteditable><div>
+  <input type="checkbox" ng-model="filter.enableVowelFilter"/>
+  {{ user.lastname | eliminateVowels:!filter.enableVowelFilter }}
+</div></code></pre>
+
+        </section>
+      </section>
 
       <section>
-        <h2>Clever Quotes</h2>
+        <h2>Happy coding!</h2>
 
         <blockquote cite="https://github.com/addyosmani">
           &ldquo;First do it, then do it right, then do it better.&rdquo; Addy Osmani
