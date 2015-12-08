@@ -43,123 +43,19 @@
 
       <section data-markdown><script type="text/template">
         # AngularJS
-        ### JS MVVM FRMWRK
-        ### 2WDB DI
-        ### WTF
+        ## Kurz Überblick
       </script></section>
-
-      <section>
-        <section data-markdown><script type="text/template">
-          # Wer bin ich?
-
-          <pre><code>var me = {
-            name : "Tilman Potthof",
-            email : "tpotthof@seibert-media.net",
-            alter : 27,
-            hobbies : ["Schlagzeug spielen", "Kochen (2,5 Gerichte)"],
-            job : [{
-              title : "Web-Entwickler",
-              bei : "//SEIBERT/MEDIA",
-              seit : "10.12.2012"
-            },{
-              title : "Schlagzeuglehrer",
-              seit : "2008"
-            }]
-          };
-          </code></pre>
-
-        </script></section>
-
-        <section data-markdown><script type="text/template">
-          ## Zeug
-
-          * Medieninformatik B.Sc. (Hochschule RheinMain)
-          * Java, C, Python, PHP, JavaScript
-          * Web-Entwicklung mit Java und JavaScript seit 2010
-          * Angular-Projekte seit 2012
-          * Workshops und Vorträge seit 2013
-          * Artikel schreiben <a href="https://angularjs.de/">AngularJS.de</a>
-        </script></section>
-        <!--section data-markdown><script type="text/template">
-          ## Hallo!
-        </script></section-->
-      </section>
-
-      <section data-background="#444">
-        <!--section data-markdown><script type="text/template">
-          ## Agenda? Nö. Brainstorming!
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Brainstorming!
-          * Angular Buzzwords
-          * Probleme mit JavaScript
-          * Qualitätsmaßnahmen für Software
-        </script></section-->
-        <section data-markdown><script type="text/template">
-          ## 2-Tages Agenda
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Grundlagen
-          * Expressions, Two-Way-Binding und Controller
-          * Einsatz von Standard-Direktiven
-          * Services und Dependency-Injection
-          * Filter
-          * Module
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Vertiefung
-          * Scopes und eigene Direktiven
-          * Die Dunklen Ecken / The Bad Parts
-          * Minification und Tooling
-          * Controller als Scope-Constructor
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Übergreifende Aspekte
-          * Debugging
-          * Good Practices
-          * Test-Driven-Development
-          * Abgrenzung zu JavaScript und jQuery
-        </script></section>
-      </section>
-
-      <section  data-background="#555">
-        <section data-markdown><script type="text/template">
-          ## Installation und Repository
-          * WebStorm oder E.D.V.
-          * <a href="https://github.com/tilmanpotthof/angular-workshop-setup">github.com/tilmanpotthof/angular-workshop-setup</a>
-          * *Link-Sharing* <a href="https://beta.etherpad.org/p/angular-workshop-101">beta.etherpad.org/p/angular-workshop-101</a>
-        </script></section>
-      </section>
 
       <section data-background="#b5533c" data-background-transition="zoom">
         <section>
           <h2>AngularJS Hello World</h2>
 
-<pre><code data-trim contenteditable>&lt;body&gt;
-  <div class="container">
-    <h2>Hello World!</h2>
-    <input type="text" />
-  </div>
-&lt;/body&gt;
-</code></pre>
-
 <pre><code>&lt;body ng-app&gt;
   <div class="container">
     <h2>Hello {{ name }}!</h2>
     <input type="text" ng-model="name" />
   </div>
 &lt;/body&gt;
-</code></pre>
-        </section>
-        <section>
-          <h2>AngularJS Hello World</h2>
-
-<pre><code>&lt;body ng-app&gt;
-  <div class="container">
-    <h2>Hello {{ name }}!</h2>
-    <input type="text" ng-model="name" />
-  </div>
-  &lt;/body&gt;
 </code></pre>
 
           <table>
@@ -183,11 +79,6 @@
 
       <section>
         <section data-markdown><script type="text/template">
-          ## Ein Schritt zurück
-          ## -
-          ## Was ist AngularJS?
-        </script></section>
-        <section data-markdown><script type="text/template">
           ## Was ist AngularJS?
           * MVVM Framework - MVVM? Framework?
           * Ehemals Freizeit-Projekt von Misko Hevery (Google)
@@ -197,11 +88,8 @@
       </section>
 
         <section data-background="#295535">
-          <section data-markdown><script type="text/template">
-            ## Template Expression
-          </script></section>
           <section>
-            <h2>Template Expression</h2>
+            <h2>Template Expressions</h2>
             <table>
               <tbody>
                 <tr>
@@ -227,26 +115,14 @@
               </tbody>
             </table>
           </section>
-          <section data-markdown><script type="text/template">
-            ## Aufgabe
-            * Texteingabe mit Zeichenzähler
-            * 140 Zeichen
-            * Negativer Wert bei Überschreitung
-            * Zusatzaufgaben
-                * Wörter zählen
-                * Zeichen verkehrt ausgeben
-          </script></section>
         </section>
 
 
       <section data-background="#2e6b46">
-        <section data-markdown><script type="text/template">
-          ## Two-Way-Binding
-        </script></section>
         <section>
           <div data-markdown><script type="text/template">
             ## Two-Way-Binding
-            * Automatische prüfung der Änderungen
+            * Automatische Prüfung der Änderungen
             * Funktioniert für alle Eingabefelder
             * Binding an Variablen und Objekt-Attribute
           </script></div>
@@ -256,31 +132,9 @@
   <option>2</option>
 </select></code></pre>
         </section>
-        <section>
-          <div data-markdown><script type="text/template">
-          ## Aufgabe
-          * Benutzerformular - Alle Werte als Objekt-Attribut
-              * Vorname, Nachname (String)
-              * Alter (Zahl)
-              * Mac-User, Bremen-Fan, Vegetarier (Boolean)
-              * Lieblingsessen (Auswahlliste: Pizza, Salat, Pommes...)
-          * Ausgabe als JSON in einem pre-Tag
-        </script></div>
-        <pre><code contenteditable>{
-  "vorname": "Tilman",
-  "nachname": "Potthof",
-  "macUser": true,
-  "vegetarier": true,
-  "lieblingsessen": "Pizza",
-  "bremenFan": false
-}</code></pre>
-        </section>
       </section>
 
       <section data-background="#2e6b46">
-        <section data-markdown><script type="text/template">
-          ## Scopes und Controller
-        </script></section>
         <section>
           <h2>Scopes und Controller</h2>
 
@@ -303,33 +157,11 @@
 });</code></pre>
 
         </section>
-        <section data-markdown><script type="text/template">
-          ## Aufgabe
-          * Benutzer-Objekt für Formular vorbelegen
-          * Berechnung der Zeichenlänge in Funktion auslagern
-        </script></section>
-      </section>
-
-      <section data-background="#2e6b46">
-        <section data-markdown><script type="text/template">
-          ## Verschachtelte Scopes
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Gemeinsame Aufgabe
-          * Verschachtelten Scope anlegen
-          * Mehrere Eingabefelder auf gleiche Variablen in unterschiedlichen Scopes
-          * Seiteneffekte untersuchen und Workarounds besprechen
-          * Ausgabe von `$rootScope` und Debugging
-
-        </script></section>
       </section>
 
       <section data-background="#0c3b66">
         <section data-markdown><script type="text/template">
-          ## Standard-Direktiven
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Direktiven - Was soll das?
+          ## Direktiven
           * Wiederverwendbare Element und Attribute
           * Idee von HTML "kopiert"
           * Kapseln von komplexen Verhalten in Bausteine
@@ -378,39 +210,6 @@
 </div></code></pre>
 
         </section>
-
-        <section data-markdown><script type="text/template">
-          ## Aufgabe
-          * Hinzufügen der Benutzer aus dem Formular in eine Liste
-          * Rendern der Liste als Tabelle
-          * Highlighting von Benutzern mit besonderen Eigenschaften
-          * Löschen Button in jeder Reihe
-          * Inline-Bearbeiten in den Reihen
-        </script></section>
-      </section>
-
-      <section>
-        <section data-markdown id="zwischenstand"><script type="text/template">
-          ## Zwischenstand der Aufgaben
-        </script></section>
-        <section>
-          <h2>Zwischenstand</h2>
-          <ul>
-            <li>
-              github branch -
-              <a href="https://github.com/tilmanpotthof/angular-workshop-setup/tree/apps/user-management">
-                <code>apps/user-management</code>
-              </a>
-            </li>
-          </ul>
-
-<pre><code contenteditable>git add .
-git commit -m "mein erster angular code"
-git fetch origin
-git checkout apps/user-management
-</code></pre>
-
-        </section>
       </section>
 
       <section data-background="#542866">
@@ -418,10 +217,6 @@ git checkout apps/user-management
           ## Services
           ## und
           ## Dependency-Injection
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Services?
-          ####  Reichen die Controller nicht für alles?
         </script></section>
         <section data-markdown><script type="text/template">
           ## Service
@@ -455,48 +250,56 @@ git checkout apps/user-management
 
         </section>
 
-
         <section data-markdown><script type="text/template">
-          ## Gemeinsame Aufgabe
-          * Live-Coding mit den Built-In Services
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Aufgabe
-          * Laden eine Benutzer-Liste mit `$http`
-          * API randomuser.me
-        </script></section>
-        <section data-markdown><script type="text/template">
-          ## Eigene Services
-          * `service` - AJAX-Requests
-          * `factory` - Logging-Wrapper
-          * `provider` - Expression-Parser
+          ## Eigener User-Service
+          * Gewünschte Methoden für den
+            * `addUser(user)`
+            * `removeUser(user)`
+            * `getUsers()`
+            * `getUserById(id)`
         </script></section>
 
-        <section><pre><code contenteditable>var app = angular.module("myApp", []);
-app.controller("myController", function ($scope, myService) {
-  $scope.myService = myService;
-});
-app.factory("myService", function () {
-  return {
-    myImportantValue: 42
+        <section><h2>Beispiel-Service</h2><pre><code contenteditable>angular.module('myModule').factory('userService', function () {
+  'use strict';
+
+  var privateUsersById = {};
+  var idCounter = 1;
+
+  var userService = {
+    addUser: function (user) {
+      if (user.id) { throw new Error('User has already a id. Use updateUser() instead'); }
+      user.id = idCounter++;;
+      privateUsersById[user.id] = user;
+      return user;
+    },
+    removeUser: function (user) {
+      delete privateUsersById[user.id];
+    },
+    getUserById: function (id) {
+      return privateUsersById[id];
+    },
+    getUsers: function () {
+      return Object.keys(privateUsersById).map(function (id) {
+        return privateUsersById[id];
+      });
+    }
   };
+
+  return userService;
+
 });</code></pre>
         </section>
 
-        <section data-markdown><script type="text/template">
-          ## Aufgabe
-          * Schreiben eines Benutzer-Service Hilfsfunktionen
-            * `addUser`
-            * `removeUser`
-            * `getUsers`
-            * `loadUsers`
-        </script></section>
+        <section><h2>Dependency Injection</h2><pre><code contenteditable>angular.module('myModule')
+  .controller('MyController', function ($scope, userService) {
+     'use strict';
+
+     $scope.userService = userService;
+});</code></pre>
+        </section>
       </section>
 
       <section data-background="#206664">
-        <section data-markdown><script type="text/template">
-          ## Filter
-        </script></section>
         <section data-markdown><script type="text/template">
           ## Filter
           * Wiederverwendbare Template-Transformatoren
